@@ -1,6 +1,6 @@
 const helpers = require('../helpers');
 const webpackMerge = require('webpack-merge');
-const webpackMergeDll = webpackMerge.strategy({plugins: 'replace'});
+const webpackMergeDll = webpackMerge.strategy({ plugins: 'replace' });
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
 
 // Webpack plugins
@@ -8,23 +8,26 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebPackPlugin = require('copy-webpack-plugin');
 
 //Webpack constants
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 const HMR = helpers.hasProcessFlag('hot');
-const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
+const METADATA = webpackMerge(commonConfig({ env: ENV }).metadata, {
   host: HOST,
   port: PORT,
   ENV: ENV,
   HMR: HMR
 });
 
+
 const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
 
 module.exports = function (options) {
-  return webpackMerge(commonConfig({ env: ENV}), {
+  return webpackMerge(commonConfig({ env: ENV }), {
     devtool: 'cheap-module-source-map',
     output: {
       path: helpers.distFolder,
@@ -36,16 +39,22 @@ module.exports = function (options) {
     },
     module: {
       rules: [
+        { test: /\.css$/, loader: 'raw-loader' },
         {
-          test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
-          include: [helpers.root('src', 'styles')]
+          test: /\.scss$/,
+          use: ['to-string-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+          include: [helpers.root('src', 'app')],
+          exclude: [helpers.root('src', 'assets')]
         },
         {
           test: /\.scss$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
-          include: [helpers.root('src', 'styles')]
-        },
+          include: [helpers.root('src', 'assets')],
+          exclude: helpers.root('src', 'app'),
+          loader: ExtractTextPlugin.extract({
+            fallbackLoader: "style-loader",
+            loader: "raw-loader!postcss-loader!sass-loader"
+          })
+        }
       ]
     },
     plugins: [
@@ -58,6 +67,7 @@ module.exports = function (options) {
           'HMR': METADATA.HMR,
         }
       }),
+      new ExtractTextPlugin('css/[name].css'),
       new DllBundlesPlugin({
         bundles: {
           polyfills: [
@@ -85,7 +95,7 @@ module.exports = function (options) {
           ]
         },
         dllDir: helpers.root('dll'),
-        webpackConfig: webpackMergeDll(commonConfig({env: ENV}), {
+        webpackConfig: webpackMergeDll(commonConfig({ env: ENV }), {
           devtool: 'cheap-module-source-map',
           plugins: []
         })

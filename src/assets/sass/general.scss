@@ -1,0 +1,83 @@
+@import 'form.scss';
+@import 'theme.scss';
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+.centered {
+    text-align:center;
+}
+
+form {
+    .has-error {
+        color: none;
+
+        .form-control {
+            border-color: #c2cad8;
+
+            &:focus {
+                border-color: #93a1bb;
+            }
+        }
+
+        .input-group-addon {
+            border-color: #c2cad8;
+            background: #eeeeee;
+        }
+    }
+
+    .help-block {
+        display: none;
+    }
+
+    &.submit {
+        .has-error {
+            color: default;
+
+            input {
+                border-color: #e73d4a;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            }
+
+            .help-block {
+                display: block;
+            }
+
+            .input-group-addon {
+                color: #e73d4a;
+                border-color: #e73d4a;
+                background-color: #fbe1e3;
+            }
+        }
+
+    }
+}
+
+.tabbable-line {
+
+    .nav-tabs {
+        border: 0;
+
+        .nav-link {
+            &.active {
+                border: 0;
+                background: #eeeeee;
+            }
+        }
+
+    }
+
+}
+
+.form-group {
+    label {
+        display: inline-block;
+        padding-bottom: 1rem;
+    }
+}

@@ -62,22 +62,12 @@ module.exports = function(options) {
           use: 'json-loader'
         },
         {
-          test: /\.css$/,
-          use: ['to-string-loader', 'css-loader'],
-          exclude: [helpers.root('src', 'styles')]
-        },
-        {
-          test: /\.scss$/,
-          use: ['to-string-loader', 'css-loader', 'sass-loader'],
-          exclude: [helpers.root('src', 'styles')]
-        },
-        {
           test: /\.html$/,
           use: 'raw-loader',
           exclude: [helpers.root('src/index.html')]
         },
         {
-          test: /\.(jpg|png|gif)$/,
+          test: /\.(jpg|png|gif|ttf|eot|svg|woff|woff2)$/,
           use: 'file-loader'
         }
       ]
