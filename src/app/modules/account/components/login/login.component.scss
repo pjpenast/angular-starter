@@ -1,0 +1,35 @@
+h3 {
+    color: #67d3e0;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 400 !important;
+    padding-bottom: 10px;
+}
+
+.forget-password {
+    line-height: 40px;
+}
+
+.create-account {
+    margin: 0 -40px -30px -40px;
+    padding: 15px 0 17px 0;
+    text-align: center;
+    background-color: #6c7a8d;
+    border-radius: 0 0 7px 7px;
+
+    p {
+        margin: 0;
+    }
+
+    p a {
+        font-weight: 600;
+        font-size: 14px;
+        color: #c3cedd;
+    }
+
+    a {
+        display: inline-block;
+        margin-top: 5px;
+    }
+
+}

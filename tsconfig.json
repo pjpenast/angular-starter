@@ -17,6 +17,14 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "paths" : {
+      "modules" : [
+        "src/app/modules/index.ts"
+      ],
+      "services" : [
+        "src/app/services/index.ts"
+      ]
+    },
     "types" : [
       "hammerjs",
       "jasmine",

@@ -7,6 +7,8 @@ import { AppState, InternalStateType } from './app.service';
 import { ENV_PROVIDERS } from './environment';
 import { AppComponent } from './app.component';
 
+import { AccountModule, SharedModule } from 'modules';
+
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -20,16 +22,20 @@ type StoreType = {
 };
 
 @NgModule({
-  bootstrap: [AppComponent],
+  bootstrap: [ AppComponent ],
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    SharedModule,
+    BrowserModule,
+    AccountModule,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS
+  ],
+  exports: [
   ]
 })
 export class AppModule {

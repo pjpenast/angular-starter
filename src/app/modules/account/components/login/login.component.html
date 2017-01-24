@@ -1,0 +1,42 @@
+<form (ngSubmit)="onSubmit(loginForm.value, loginForm.valid)" novalidate [formGroup]="loginForm" class="login-form allcp-form">
+
+     <h3 class="form-title font-green">{{'SIGN_IN' | translate}}</h3>
+
+     <page-alert
+        [message]="errorMessage">
+    </page-alert>
+
+    <div class="section">
+
+        <label for="email" class="field prepend-icon">
+            <input type="email" autocomplete="off" class="gui-input" placeholder="{{'ENTER_YOUR_EMAIL' | translate}}" formControlName="email" id="email">
+            <label for="email" class="field-icon">
+                <i class="fa fa-user"></i>
+            </label>
+        </label>
+
+    </div>
+
+    <div class="section">
+
+        <label for="password" class="field prepend-icon">
+            <input type="text" class="gui-input" autocomplete="off" type="password" placeholder="{{'ENTER_YOUR_PASSWORD' | translate}}" formControlName="password" id="password">
+            <label for="password" class="field-icon">
+                <i class="fa fa-lock"></i>
+            </label>
+        </label>
+
+    </div>
+
+    <div class="section">
+        <button type="submit" class="btn btn-bordered btn-primary pull-right">{{'LOGIN' | translate}}</button>
+        <a id="forget-password" class="forget-password" routerLink="/account/password">{{'FORGET_PASSWORD' | translate}}</a>
+    </div>
+
+    <div class="create-account">
+        <p>
+            <a routerLink="/account/register" id="register-btn" class="uppercase">{{'CREATE_AN_ACCOUNT' | translate}}</a>
+        </p>
+    </div>
+
+</form>

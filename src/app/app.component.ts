@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { TranslateService } from './services/translate';
+import { Component, OnInit } from '@angular/core';
+
 
 import '../assets/sass/general.scss';
 
@@ -8,5 +10,12 @@ import '../assets/sass/general.scss';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  constructor(
+    private _translate: TranslateService
+  ) {}
+
+  ngOnInit(): void {
+    this._translate.use('es');
+  }
 
 }

@@ -36,7 +36,11 @@ module.exports = function(options) {
     },
     resolve: {
       extensions: ['.ts', '.js', '.json'],
-      modules: [ helpers.root('src'), helpers.root('node_modules')]
+      modules: [ helpers.root('src'), helpers.root('node_modules')],
+      alias: {
+        modules: helpers.root('src/app/modules/index.ts'),
+        services: helpers.root('src/app/services/index.ts')
+      }
     },
     module: {
       rules: [
