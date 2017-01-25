@@ -106,7 +106,11 @@ module.exports = function(options) {
         }
       ),
       new CopyWebpackPlugin([
-        { from: helpers.root('src/assets'), to: helpers.root('dist/assets') }
+        {
+          from: helpers.root('src/assets'),
+          to: helpers.root('dist/assets'),
+          ignore: ['*.scss']
+        }
       ]),
       new HtmlWebpackPlugin({
         template: 'src/index.html',

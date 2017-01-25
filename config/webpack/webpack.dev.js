@@ -9,7 +9,6 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CopyWebPackPlugin = require('copy-webpack-plugin');
 
 //Webpack constants
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
@@ -67,7 +66,7 @@ module.exports = function (options) {
           'HMR': METADATA.HMR,
         }
       }),
-      new ExtractTextPlugin('css/[name].css'),
+      new ExtractTextPlugin('assets/css/[name].css'),
       new DllBundlesPlugin({
         bundles: {
           polyfills: [
