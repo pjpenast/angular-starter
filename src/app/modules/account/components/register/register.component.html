@@ -1,98 +1,97 @@
 <form (ngSubmit)="onSubmit(form.value, form.valid)" novalidate [formGroup]="form" class="register-form allcp-form" [ngClass]="{'submit' : submitted}">
 
-    <h3 class="form-title font-green">{{'SIGN_IN' | translate}}</h3>
+  <h3 class="form-title font-green">{{'SIGN_IN' | translate}}</h3>
 
-    <page-alert
-       [message]="errorMessage">
-   </page-alert>
+  <join-alert [message]="errorMessage">
+  </join-alert>
 
-   <div class="section" [ngClass]="{'has-error': form.controls.name.errors }">
+  <div class="section" [ngClass]="{'has-error': form.controls.name.errors }">
 
-       <label for="name" class="field">
+    <label for="name" class="field">
            <input type="email" autocomplete="off" class="gui-input" placeholder="{{'ENTER_YOUR_FULLNAME' | translate}}" formControlName="name" id="name">
        </label>
 
-       <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
+    <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
 
-   </div>
+  </div>
 
-   <div class="section" [ngClass]="{'has-error': form.controls.email.errors }">
+  <div class="section" [ngClass]="{'has-error': form.controls.email.errors }">
 
-       <label for="email" class="field">
+    <label for="email" class="field">
            <input type="email" autocomplete="off" class="gui-input" placeholder="{{'ENTER_YOUR_EMAIL' | translate}}" formControlName="email" id="email">
        </label>
 
-       <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
+    <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
 
-   </div>
+  </div>
 
-   <div class="section" [ngClass]="{'has-error': form.controls.address.errors }">
+  <div class="section" [ngClass]="{'has-error': form.controls.address.errors }">
 
-       <label for="address" class="field">
+    <label for="address" class="field">
            <input type="text" autocomplete="off" class="gui-input" placeholder="{{'ENTER_YOUR_ADDRESS' | translate}}" formControlName="address" id="address">
        </label>
 
-       <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
+    <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
 
-   </div>
+  </div>
 
-   <div class="section" [ngClass]="{'has-error': form.controls.city.errors }">
+  <div class="section" [ngClass]="{'has-error': form.controls.city.errors }">
 
-       <label for="city" class="field">
+    <label for="city" class="field">
            <input type="text" autocomplete="off" class="gui-input" placeholder="{{'ENTER_YOUR_CITY' | translate}}" formControlName="city" id="city">
        </label>
 
-       <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
+    <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
 
-   </div>
+  </div>
 
-   <div class="section" [ngClass]="{'has-error': form.controls.country.errors }">
+  <div class="section" [ngClass]="{'has-error': form.controls.country.errors }">
 
-       <label for="country" class="field">
+    <label for="country" class="field">
            <select class="gui-input" type="text"  formControlName="country" id="country">
                <option value="">{{'SELECT_YOUR_COUNTRY' | translate}}</option>
                <option *ngFor="let country of countries" [value]="country.code">{{country.name}}</option>
            </select>
        </label>
 
-       <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
+    <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
 
-   </div>
+  </div>
 
-   <div class="section" [ngClass]="{'has-error': form.controls.password.errors }">
+  <div class="section" [ngClass]="{'has-error': form.controls.password.errors }">
 
-       <label for="city" class="field">
+    <label for="city" class="field">
            <input type="password" autocomplete="off" class="gui-input" placeholder="{{'ENTER_YOUR_PASSWORD' | translate}}" formControlName="password" id="password">
        </label>
 
-       <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
+    <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
 
-   </div>
+  </div>
 
-   <div class="section" [ngClass]="{'has-error': form.controls.repeatPassword.errors }">
+  <div class="section" [ngClass]="{'has-error': form.controls.repeatPassword.errors }">
 
-       <label for="city" class="field">
+    <label for="city" class="field">
            <input type="repeatPassword" autocomplete="off" class="gui-input" placeholder="{{'RETYPE_YOUR_PASSWORD' | translate}}" formControlName="repeatPassword" id="repeatPassword">
        </label>
 
-       <span class="help-block">{{'PASSWORD_DOES_NOT_MATCH' | translate}}</span>
+    <span class="help-block">{{'PASSWORD_DOES_NOT_MATCH' | translate}}</span>
 
-   </div>
+  </div>
 
-   <div class="form-group margin-top-20 margin-bottom-20" [ngClass]="{'has-error': form.controls.terms.errors }">
-       <label class="mt-checkbox mt-checkbox-outline">
-            <input-check formControlName="terms">I agree to the Terms of Service</input-check>
-        </label>
-        <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
-    </div>
+  <div class="form-group margin-top-20 margin-bottom-20" [ngClass]="{'has-error': form.controls.terms.errors }">
+    <label class="mt-checkbox mt-checkbox-outline">
+        <join-input type="check" formControlName="terms">I agree to the Terms of Service</join-input>
+      </label>
+    <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
+  </div>
 
-    <div class="form-actions">
-        <button type="button" class="btn btn-bordered btn-default pull-left" routerLink="/account/login">
+  <div class="form-actions">
+    <button type="button" class="btn btn-bordered btn-default pull-left" routerLink="/account/login">
             {{'BACK' | translate}}
         </button>
-        <button type="submit" class="btn btn-bordered btn-primary pull-right">
+    <button type="submit" class="btn btn-bordered btn-primary pull-right">
             {{'SEND' | translate}}
         </button>
-    </div>
+  </div>
 
 </form>

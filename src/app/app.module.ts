@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
@@ -6,8 +7,10 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { ENV_PROVIDERS } from './environment';
 import { AppComponent } from './app.component';
+import AppRoutes from './app.routes';
 
 import { AccountModule, SharedModule } from 'modules';
+import { ExceptionModule } from './services/exception';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -28,8 +31,10 @@ type StoreType = {
   ],
   imports: [
     SharedModule,
+    ExceptionModule,
     BrowserModule,
     AccountModule,
+    RouterModule.forRoot(AppRoutes)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

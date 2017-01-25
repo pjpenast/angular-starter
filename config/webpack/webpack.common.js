@@ -106,7 +106,7 @@ module.exports = function(options) {
         }
       ),
       new CopyWebpackPlugin([
-        { from: 'src/assets', to: 'assets' }
+        { from: helpers.root('src/assets'), to: helpers.root('dist/assets') }
       ]),
       new HtmlWebpackPlugin({
         template: 'src/index.html',
