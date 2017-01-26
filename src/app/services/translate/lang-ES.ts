@@ -56,5 +56,6 @@ export const LANG_ES_TRANS = {
     'COMPONENTS' : 'Componentes',
     'CREATED_AT' : 'Creada',
     'ENGLISH' : 'Inglés',
-    'SPANISH' : 'Español'
+    'SPANISH' : 'Español',
+    'USER_NOT_EXIST' : 'El usuario no existe'
 };

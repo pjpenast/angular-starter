@@ -8,6 +8,8 @@ import { AppState, InternalStateType } from './app.service';
 import { ENV_PROVIDERS } from './environment';
 import { AppComponent } from './app.component';
 import AppRoutes from './app.routes';
+import { ApolloModule } from 'angular2-apollo';
+import { ClientGraphQL, LocalStorage } from './utils';
 
 import { AccountModule, SharedModule } from 'modules';
 import { ExceptionModule } from './services/exception';
@@ -33,12 +35,17 @@ type StoreType = {
     SharedModule,
     ExceptionModule,
     BrowserModule,
-    AccountModule,
+    AccountModule.forRoot(),
+    ApolloModule.withClient(ClientGraphQL),
     RouterModule.forRoot(AppRoutes)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+     { 
+       provide: LocalStorage, 
+       useValue: window.localStorage
+    }
   ],
   exports: [
   ]

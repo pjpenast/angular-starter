@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders  } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import AccountRoute from './account.route';
 import AccountComponent from './account.component';
@@ -6,6 +6,7 @@ import { LoginComponent, RegisterComponent, PasswordComponent } from './componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared';
+import { AuthService } from '../../services/auth';
 
 @NgModule({
     imports: [
@@ -23,5 +24,12 @@ import { SharedModule } from '../shared';
 })
 
 export class AccountModule {
-
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: AccountModule,
+            providers: [
+                AuthService
+            ]
+        }
+    }
 }

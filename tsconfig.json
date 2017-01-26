@@ -23,6 +23,9 @@
       ],
       "services" : [
         "src/app/services/index.ts"
+      ],
+      "services/translations" : [
+        "src/app/services/translations/index.ts"
       ]
     },
     "types" : [

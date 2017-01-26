@@ -1,0 +1,5 @@
+mutation logout($token: String!) {
+    logout(token: $token) {
+        status
+    }
+}
