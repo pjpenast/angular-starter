@@ -4,8 +4,6 @@ const networkInterface = createNetworkInterface({ uri: 'http://localhost:5000/gr
 
 export function ClientGraphQL(): ApolloClient {
 
-  console.log(localStorage.getItem('AUTH_TOKEN'));
-
   networkInterface.use([{
     applyMiddleware(req, next) {
       if (!req.options.headers) {

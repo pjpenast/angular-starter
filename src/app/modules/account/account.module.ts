@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared';
 import { AuthService } from '../../services/auth';
+import { CountryService } from '../../services/country';
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ export class AccountModule {
         return {
             ngModule: AccountModule,
             providers: [
-                AuthService
+                AuthService,
+                CountryService
             ]
         }
     }

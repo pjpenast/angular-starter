@@ -67,6 +67,8 @@ export class AuthService {
         }
       }
     })
+    .do(this.createSession)
+    .catch(this.handleError)
   }
 
   login(user: UserInput): Observable<ApolloQueryResult<any>> {
@@ -77,21 +79,23 @@ export class AuthService {
         password: user.password
       }
     })
-    .map(result => {result.data})
+    .do(this.createSession.bind(this))
     .catch(this.handleError)
   }
+  
   private handleError(error: ApolloError) {
-    
-
-    console.log(error);
-
-    console.log(error.message)
-
-
-
-    console.log(new ApolloError({ networkError: error }));
     return Observable.throw(error.message.replace('GraphQL error: ', ''))
   }
+
+  private createSession(response: any) {
+    const { data } = response;
+    
+    this.setCredential(data.login.token);
+    this.setUser(data.login.user);
+
+    return data;
+  }
+
   private setUser(user: User) {
     this.user = user;
     this.localStorage.setItem(AUTH_USER_KEY, JSON.stringify(user));

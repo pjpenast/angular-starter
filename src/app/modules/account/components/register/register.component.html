@@ -71,7 +71,7 @@
   <div class="section" [ngClass]="{'has-error': form.controls.repeatPassword.errors }">
 
     <label for="city" class="field">
-           <input type="repeatPassword" autocomplete="off" class="gui-input" placeholder="{{'RETYPE_YOUR_PASSWORD' | translate}}" formControlName="repeatPassword" id="repeatPassword">
+           <input type="password" autocomplete="off" class="gui-input" placeholder="{{'RETYPE_YOUR_PASSWORD' | translate}}" formControlName="repeatPassword" id="repeatPassword">
        </label>
 
     <span class="help-block">{{'PASSWORD_DOES_NOT_MATCH' | translate}}</span>
@@ -80,7 +80,7 @@
 
   <div class="form-group margin-top-20 margin-bottom-20" [ngClass]="{'has-error': form.controls.terms.errors }">
     <label class="mt-checkbox mt-checkbox-outline">
-        <join-input type="check" formControlName="terms">I agree to the Terms of Service</join-input>
+        <join-input type="checkbox" formControlName="terms">I agree to the Terms of Service</join-input>
       </label>
     <span class="help-block">{{'THIS_FIELD_IS_REQUIRED' | translate}}</span>
   </div>

@@ -5,6 +5,7 @@ import { TranslateService } from '../../../../services/translate';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
+import { ValidateEmail } from 'utils';
 
 @Component({
     selector: 'account-login',
@@ -23,7 +24,7 @@ export class LoginComponent {
 
 
     this.loginForm = new FormGroup({
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', ValidateEmail),
       password: new FormControl('', Validators.required)
     })
 

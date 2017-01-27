@@ -24,8 +24,8 @@
       "services" : [
         "src/app/services/index.ts"
       ],
-      "services/translations" : [
-        "src/app/services/translations/index.ts"
+      "utils" : [
+        "src/app/utils/index.ts"
       ]
     },
     "types" : [

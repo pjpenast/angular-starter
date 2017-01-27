@@ -3,17 +3,21 @@ import { RouterModule } from '@angular/router';
 
 import CmsRoute from './cms.route';
 import { ApplicationModule } from './modules';
+import { SharedModule } from '../shared';
 
 @NgModule({
   imports: [
     RouterModule.forRoot(CmsRoute),
-    ApplicationModule
+    ApplicationModule,
+    SharedModule
   ],
   declarations: [
 
   ],
   providers: [
 
+  ],
+  exports: [
   ]
 })
 

@@ -40,7 +40,7 @@ module.exports = function(options) {
       alias: {
         modules: helpers.root('src/app/modules/index.ts'),
         services: helpers.root('src/app/services/index.ts'),
-        'services/translations' : helpers.root('src/app/services/translations/index.ts')
+        utils: helpers.root('src/app/utils/index.ts')
       }
     },
     module: {

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dev": "npm run clean:dist && webpack --config config/webpack/webpack.dev.js --progress --profile",
+    "build:dev": "webpack --config config/webpack/webpack.dev.js --progress --profile",
     "build": "npm run build:dev",
     "clean:dll": "npm run rimraf -- dll",
     "clean:aot": "npm run rimraf -- compiled",

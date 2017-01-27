@@ -41,7 +41,7 @@ module.exports = function (options) {
         { test: /\.css$/, loader: 'raw-loader' },
         {
           test: /\.scss$/,
-          use: ['to-string-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+          use: ['to-string-loader', 'css-loader', 'postcss-loader',  'sass-loader'],
           include: [helpers.root('src', 'app')],
           exclude: [helpers.root('src', 'assets')]
         },

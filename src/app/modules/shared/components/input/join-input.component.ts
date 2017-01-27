@@ -19,8 +19,8 @@ export class InputComponent implements ControlValueAccessor {
   private _innerValue: any;
   private propagateChange = (_: any) => { };
   constructor() {
-
   }
+
   get innerValue() {
     return this._innerValue;
   }
@@ -40,6 +40,8 @@ export class InputComponent implements ControlValueAccessor {
   registerOnTouched(fn: any) {
   }
   toggleCheck() {
+    console.log(this.innerValue);
     this.innerValue = !this.innerValue;
+    console.log(this.innerValue);
   }
 }

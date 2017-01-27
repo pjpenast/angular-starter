@@ -11,7 +11,7 @@ import AppRoutes from './app.routes';
 import { ApolloModule } from 'angular2-apollo';
 import { ClientGraphQL, LocalStorage } from './utils';
 
-import { AccountModule, SharedModule } from 'modules';
+import { AccountModule, SharedModule, CmsModule } from 'modules';
 import { ExceptionModule } from './services/exception';
 
 // Application wide providers
