@@ -1,0 +1,26 @@
+<layout-page
+    title="{{'APPLICATIONS' | translate}}"
+    icon="home">
+    <div actions>
+        <button class="btn btn-primary btn-bordered" routerLink="new">{{'NEW_APPLICATION' | translate}}</button>
+    </div>
+
+    <div body>
+        <div class="row" *ngIf="apps.length">
+            <div class="col-xs-12 col-sm-4 col-lg-4" *ngFor="let app of apps">
+                <app-item [app]="app"></app-item>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="!apps.length">
+            <div class="m-heading-1 m-bordered border-blue">
+                <p>{{'YOU_HAVE_NOT_CREATED_YET_ANY' | translate}} <b>{{'APPLICATION' | translate}}</b>. {{'MAKE_YOUR_FIRST_APPLICATION_TO_START' | translate}}</p>
+            </div>
+
+            <div class="col-md-12 centered">
+                <button type="button" class="btn blue btn-lg btn-outline" routerLink="new">{{'NEW_APPLICATION' | translate}}</button>
+            </div>
+        </div>
+    </div>
+
+</layout-page>

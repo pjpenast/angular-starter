@@ -1,0 +1,42 @@
+<layout-item
+    [image]="app.icon.url"
+    (link)="goToPages()"
+    [title]="app.name">
+
+    <div body>
+        <table class="table table-striped table-advance">
+            <tbody>
+                <tr>
+                    <td><b>{{ 'PLATFORMS' | translate }}</b></td>
+                    <td>
+                        <div class="platforms">
+                            <i *ngFor="let platform of app.platform" class="fa" [ngClass]="getPlatform(platform)"></i>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>{{ 'LANGUAGES' | translate }}</b></td>
+                    <td>
+                        <div class="languages">
+                            <i *ngFor="let language of app.languages" class="fa fa-lang" [ngClass]="language"></i>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>{{ 'DOMAIN' | translate }}</b></td>
+                    <td>{{app.domain}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div footer>
+        <a class="btn btn-info dark" (click)="editApp()">
+            <i class="fa fa-pencil"></i> {{ 'EDIT' | translate }}
+        </a>
+        <a class="btn btn-danger dark" (click)="deleteApp()">
+            <i class="fa fa-remove"></i> {{ 'REMOVE' | translate }}
+        </a>
+    </div>
+
+</layout-item>
