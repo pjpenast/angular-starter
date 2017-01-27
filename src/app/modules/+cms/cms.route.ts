@@ -3,8 +3,13 @@ import CmsComponent from './cms.component';
 
 const cmsRoutes: Routes = [
   {
-    path: 'account', component: CmsComponent
-  }
+    path: '', component: CmsComponent, pathMatch: 'fullPatch', children:
+    [
+      {
+        path: 'app', component:
+      }
+    ]
+  },
 ]
 
 export default cmsRoutes;
