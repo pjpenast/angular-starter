@@ -1,4 +1,6 @@
-<div class="alert alert-danger" [ngClass]="{'show' : message}">
-    <button class="close" data-close="alert"></button>
-    <span>{{message}}</span>
+<div class="alert light alert-dismissable" *ngIf="show" [ngClass]="getMode()">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" (click)="closeHandler()">×</button>
+    <i class="fa pr10" [ngClass]="getIcon()" *ngIf="icon"></i>
+    <ng-content></ng-content>
+    <p *ngIf="message">{{message}}</p>
 </div>

@@ -1,0 +1,41 @@
+<join-layout
+    title="{{'PAGES' | translate}}"
+    [breadcrumbs]="breadcrumbs"
+    icon="file-o">
+    <div actions>
+        <button class="btn btn-primary btn-bordered" routerLink="new">{{'NEW_PAGE' | translate}}</button>
+    </div>
+
+    <div body>
+        <div class="row" *ngIf="pages.length">
+            <div class="col-xs-6 col-lg-4" *ngFor="let page of pages">
+                <page-item
+                [page]="page"
+                (deletePage)="deletePage($event)">
+                </page-item>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="!pages.length">
+
+            <div class="col-md-6 col-md-offset-3">
+
+                <join-alert
+                    show="true"
+                    mode="default"
+                    icon="info">
+                    {{'YOU_HAVE_NOT_CREATED_YET_ANY' | translate}} <b>{{'PAGE' | translate}}</b>. {{'MAKE_YOUR_FIRST_PAGE_TO_START' | translate}}
+                </join-alert>
+
+                <div class="col-md-12 centered">
+                    <button type="button" class="btn btn-bordered btn-primary"
+                    routerLink="new">{{'NEW_PAGE' | translate}}</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</join-layout>

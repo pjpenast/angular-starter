@@ -1,13 +1,21 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { TRANSLATION_PROVIDERS, TranslateService, TranslatePipe } from '../../services/translate';
+import { DropdownModule } from 'ng2-bootstrap/dropdown';
+import { TranslatePipe } from '../../services/translate';
 
-import { AlertComponent, InputComponent } from './components';
+import { AlertComponent, CheckboxComponent, InputComponent, LayoutComponent, InputFileComponent, SelectComponent, ItemComponent } from './components';
 
 const EXPORTS_DECLARATIONS = [
   AlertComponent,
+  CheckboxComponent,
+  LayoutComponent,
   InputComponent,
-  TranslatePipe,
+  SelectComponent,
+  InputFileComponent,
+  ItemComponent,
+  TranslatePipe  
 ];
 
 const EXPORTS_IMPORTS = [
@@ -16,18 +24,18 @@ const EXPORTS_IMPORTS = [
 
 @NgModule({
   imports: [
-    ...EXPORTS_IMPORTS
+    ...EXPORTS_IMPORTS,
+    RouterModule,
+    FormsModule,
+    DropdownModule.forRoot()
   ],
   declarations: [
     ...EXPORTS_DECLARATIONS
   ],
-  providers: [
-    TRANSLATION_PROVIDERS,
-    TranslateService
-  ],
   exports: [
     ...EXPORTS_IMPORTS,
-    ...EXPORTS_DECLARATIONS
+    ...EXPORTS_DECLARATIONS,
+    DropdownModule
   ]
 })
 export class SharedModule {

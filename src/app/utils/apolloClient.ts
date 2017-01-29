@@ -9,6 +9,7 @@ export function ClientGraphQL(): ApolloClient {
       if (!req.options.headers) {
         req.options.headers = {};  // Create the header object if needed.
       }
+      
       // get the authentication token from local storage if it exists
       req.options.headers['Authorization'] = 'JWT ' + localStorage.getItem('AUTH_TOKEN') || '';
       next();

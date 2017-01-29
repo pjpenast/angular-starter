@@ -1,0 +1,11 @@
+fragment seoInfo on Seo {
+    title {
+        ...translateInfo
+    },
+    description {
+        ...translateInfo
+    },
+    keywords {
+        ...translateInfo
+    }
+}

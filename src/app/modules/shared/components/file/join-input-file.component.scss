@@ -1,0 +1,16 @@
+input[readonly] {
+    background-color: white;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.box-image {
+    margin-top: 10px;
+    display: inline-block;
+
+    img {
+        max-width: 200px;
+    }
+}

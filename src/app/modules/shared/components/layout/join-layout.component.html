@@ -1,0 +1,27 @@
+<section id="content_wrapper">
+    <header id="topbar" class="alt">
+        <div class="topbar-left">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-icon">
+                    <a href="dashboard1.html">
+                        <span class="fa fa-home" [ngClass]="showIcon()"></span>
+                    </a>
+                </li>
+                <li class="breadcrumb-active">
+                    <a (click)="link()">{{title}}</a>
+                </li>
+
+                <li *ngFor="let item of breadcrumbs">
+                    <a [routerLink]="item.link">{{item.name}}</a>
+                </li>
+
+            </ol>
+        </div>
+        <div class="topbar-right">
+            <ng-content select="[actions]"></ng-content>
+        </div>
+    </header>
+    <section id="content" class="table-layout">
+        <ng-content select="[body]"></ng-content>
+    </section>
+</section>

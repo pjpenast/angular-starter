@@ -2,20 +2,22 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import CmsRoute from './cms.route';
-import { ApplicationModule } from './modules';
 import { SharedModule } from '../shared';
+import { CmsResolve } from './cms.resolve';
+import { CmsComponent } from './cms.component';
+import { HeaderComponent } from './components';
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(CmsRoute),
-    ApplicationModule,
+    RouterModule.forChild(CmsRoute),
     SharedModule
   ],
   declarations: [
-
+    CmsComponent,
+    HeaderComponent
   ],
   providers: [
-
+    CmsResolve
   ],
   exports: [
   ]

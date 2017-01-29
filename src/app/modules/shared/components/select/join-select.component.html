@@ -1,0 +1,6 @@
+<div class="mt-checkbox-list" *ngFor="let item of options">
+    <label class="mt-checkbox mt-checkbox-outline">
+        <input type="checkbox" [value]="item.value" [checked]="checkValue(item.value)" (change)=updateValue(item.value)> {{item.name}}
+        <span></span>
+    </label>
+</div>

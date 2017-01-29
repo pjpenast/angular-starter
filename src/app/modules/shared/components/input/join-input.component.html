@@ -1,7 +1,15 @@
-<div *ngIf="type === 'checkbox'">
-  <label class="block mt15 option option-primary">
-    <input type="checkbox">
-    <span class="checkbox" (click)="toggleCheck()"></span>
-    <ng-content></ng-content>
-  </label>
+<div class="form-group" [ngClass]="{'has-error': error }">
+    <label class="field" [ngClass]="{'prepend-icon': icon}">
+        <span><ng-content></ng-content></span>
+        <input [type]="type" [(ngModel)]="value" autocomplete="off" class="gui-input" [placeholder]="placeholder" [id]="name">
+        <label class="field-icon" *ngIf="icon">
+            <i class="fa" [ngClass]="getIcon()"></i>
+        </label>
+    </label>
+
+     <span class="help-block">
+         <i class="fa fa-exclamation-triangle"></i>
+         {{errorMessage}}
+     </span>
+
 </div>

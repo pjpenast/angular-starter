@@ -1,4 +1,8 @@
 var path = require('path');
+var parameters = require('../parameters.json');
+const SERVER = process.env.NODE_ENV || 'dev';
+
+var config = parameters.server[SERVER];
 
 const EVENT = process.env.npm_lifecycle_event || '';
 
@@ -26,3 +30,4 @@ exports.root = root;
 exports.isWebpackDevServer = isWebpackDevServer;
 exports.srcFolder = srcFolder;
 exports.distFolder = distFolder;
+exports.config = config;

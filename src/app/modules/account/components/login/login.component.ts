@@ -37,11 +37,15 @@ export class LoginComponent {
       }
 
       this.service.login(values).subscribe(
-         data => console.log(data),
+         data => {
+           this.router.navigate(['/cms']);
+         },
          err => {
-            this.errorMessage = this.translate.instant(err);  
+            this.errorMessage = this.translate.instant(err);
+            this.service.checkUser();
          }
        );
+       
 
       return true;
   }

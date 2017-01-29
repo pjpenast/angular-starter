@@ -63,7 +63,7 @@ module.exports = function (options) {
         'process.env': {
           'ENV': JSON.stringify(METADATA.ENV),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
-          'HMR': METADATA.HMR,
+          'HMR': METADATA.HMR
         }
       }),
       new ExtractTextPlugin('assets/css/[name].css'),

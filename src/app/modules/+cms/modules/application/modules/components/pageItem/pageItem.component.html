@@ -1,0 +1,17 @@
+<join-item
+    [title]="page.name">
+
+    <div body>
+        <p>{{ 'CREATED_AT' | translate }}: <b>{{ page.createdAt | date:'DD/MM/YYYY'}}</b></p>
+    </div>
+
+    <div footer>
+        <a class="btn btn-info dark" (click)="editPage()">
+            <i class="fa fa-pencil"></i> {{ 'EDIT' | translate }}
+        </a>
+        <a class="btn btn-danger dark" (click)="deleteHandler()">
+            <i class="fa fa-remove"></i> {{ 'REMOVE' | translate }}
+        </a>
+    </div>
+
+</join-item>

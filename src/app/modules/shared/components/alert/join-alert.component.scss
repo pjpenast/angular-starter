@@ -1,7 +1,15 @@
 .alert {
-    display: none;
+    position: relative;
 
-    &.show {
-        display: block;
+    .close {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
     }
+
+    p { 
+        display: inline-block;
+    }
+
+
 }

@@ -1,0 +1,16 @@
+<div class="panel panel-widget panel-item" (click)="linkHandler()">
+
+    <div class="panel-image" *ngIf="image">
+        <img [src]="image">
+    </div>
+
+    <div class="panel-body">
+        <p class="title">{{title}}</p>
+        <ng-content select="[body]"></ng-content>
+    </div>
+
+    <div class="panel-footer">
+        <ng-content select="[footer]"></ng-content>
+    </div>
+
+</div>

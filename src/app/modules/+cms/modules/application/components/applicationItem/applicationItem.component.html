@@ -1,4 +1,4 @@
-<layout-item
+<join-item
     [image]="app.icon.url"
     (link)="goToPages()"
     [title]="app.name">
@@ -31,12 +31,12 @@
     </div>
 
     <div footer>
-        <a class="btn btn-info dark" (click)="editApp()">
+        <a class="btn btn-info dark" (click)="editApp($event)">
             <i class="fa fa-pencil"></i> {{ 'EDIT' | translate }}
         </a>
-        <a class="btn btn-danger dark" (click)="deleteApp()">
+        <a class="btn btn-danger dark" (click)="deleteApp($event)">
             <i class="fa fa-remove"></i> {{ 'REMOVE' | translate }}
         </a>
     </div>
 
-</layout-item>
+</join-item>

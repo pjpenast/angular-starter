@@ -36,12 +36,32 @@ export class AuthService {
         token: token.token
       }
     })
+    .do(this.removeSession.bind(this))
 
 
   }
-  checkUser(): Observable<ApolloQueryResult<any>> {
-    return this.client.query({
-      query: checkUserQuery
+  checkUser(): Promise<ApolloQueryResult<any>> {
+
+    let promise = this.client.query({
+      query: checkUserQuery,
+      forceFetch: true
+    }).toPromise();
+
+    return new Promise((resolve, reject) => {
+      promise.then(
+        response => {
+          const { data } = response;
+          let status = data['checkUser']['status'];
+
+            if (!status) {
+              this.removeSession();
+            }
+
+          resolve(status);
+
+        }
+      )
+
     })
   }
   forgetPassword(email: string): Observable<ApolloQueryResult<any>> {
@@ -67,7 +87,7 @@ export class AuthService {
         }
       }
     })
-    .do(this.createSession)
+    .do(this.createSession.bind(this))
     .catch(this.handleError)
   }
 
@@ -89,11 +109,17 @@ export class AuthService {
 
   private createSession(response: any) {
     const { data } = response;
-    
+   
     this.setCredential(data.login.token);
     this.setUser(data.login.user);
 
     return data;
+  }
+
+  private removeSession() {
+    this.removeCredential();
+    this.removeUser();
+    this.router.navigate(['/account/login']);
   }
 
   private setUser(user: User) {
@@ -111,6 +137,7 @@ export class AuthService {
 
   private setCredential(cred: Credential) {
     this.localStorage.setItem(AUTH_TOKEN_KEY, cred.token);
+    console.log(this.localStorage.getItem(AUTH_TOKEN_KEY));
     this.credential = cred;
   }
 

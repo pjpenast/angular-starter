@@ -1,0 +1,11 @@
+fragment appInfo on App {
+    id,
+    name,
+    code,
+    domain,
+    platform,
+    icon {
+        ...imageInfo
+    }
+    languages
+}

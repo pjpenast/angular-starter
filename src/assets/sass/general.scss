@@ -85,3 +85,32 @@ form {
 .allcp-form .append-icon .field-icon, .allcp-form .prepend-icon .field-icon {
     top: 15px;
 }
+
+.languages {
+
+    i {
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        display :inline-block;
+        background-size: cover;
+        margin: 0 5px 0 0;
+
+        &.es {
+            background-image: url('../images/flags/es.svg');
+        }
+
+        &.en {
+            background-image: url('../images/flags/en.svg');
+        }
+
+        &.de {
+            background-image: url('../images/flags/de.svg');
+        }
+
+        &.fr {
+            background-image: url('../images/flags/fr.svg');
+        }
+    }
+
+}

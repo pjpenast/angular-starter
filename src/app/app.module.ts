@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
@@ -13,6 +13,8 @@ import { ClientGraphQL, LocalStorage } from './utils';
 
 import { AccountModule, SharedModule, CmsModule } from 'modules';
 import { ExceptionModule } from './services/exception';
+import { TranslateService, TRANSLATION_PROVIDERS } from './services/translate';
+import { LanguageService, PlatformService } from 'services';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -36,8 +38,9 @@ type StoreType = {
     ExceptionModule,
     BrowserModule,
     AccountModule.forRoot(),
+    CmsModule,
     ApolloModule.withClient(ClientGraphQL),
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
@@ -45,7 +48,11 @@ type StoreType = {
      { 
        provide: LocalStorage, 
        useValue: window.localStorage
-    }
+    },
+    TranslateService,
+    TRANSLATION_PROVIDERS,
+    LanguageService,
+    PlatformService
   ],
   exports: [
   ]

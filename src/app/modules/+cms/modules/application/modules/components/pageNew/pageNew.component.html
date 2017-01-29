@@ -1,0 +1,61 @@
+<join-layout
+    title="{{'NEW_PAGE' | translate}}"
+    icon="file-o"
+    [breadcrumbs]="breadcrumbs">
+    <div class="row" body>
+        <div class="panel sort-disable mb50 panel-editbox-open">
+            <div class="panel-body">
+                
+                <form (ngSubmit)="onSubmit(form.value, form.valid)" novalidate [formGroup]="form" class="register-form allcp-form" [ngClass]="{'submit' : submitted}">
+                    <div class="form-body col-md-12">
+
+                        <join-alert
+                           [show]="errorShow"
+                           mode="danger"
+                           icon="exclamation-triangle"
+                           [message]="errorMessage">
+                        </join-alert>
+
+                        <join-input
+                            name="name"
+                            type="text"
+                            [error]="form.controls.name.errors"
+                            errormessage="{{'THIS_FIELD_IS_REQUIRED' | translate}}"
+                            formControlName="name"
+                            placeholder="{{'ENTER_NAME' | translate}}">
+                            {{'PAGE_NAME' | translate}}
+                        </join-input>
+
+                        <join-input
+                            name="slug"
+                            type="text"
+                            [error]="form.controls.slug.errors"
+                            errormessage="{{'THIS_FIELD_IS_REQUIRED' | translate}}"
+                            formControlName="slug"
+                            (change)="updateSlug($event)"
+                            placeholder="Ejemplo: com.joinble.app">
+                            {{'PAGE_SLUG' | translate}}
+                        </join-input>
+
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" routerLink="/apps/{{app.id}}/pages" class="btn btn-default">
+                            <i class="fa fa-chevron-left"></i>
+                            {{'CANCEL' | translate}}
+                        </button>
+                        <button type="submit" class="btn btn-info">
+                            <i class="fa fa-floppy-o"></i>
+                            {{'SAVE' | translate}}
+                        </button>
+                    </div>
+
+
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</join-layout>
