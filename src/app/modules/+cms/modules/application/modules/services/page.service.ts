@@ -6,14 +6,10 @@ import { Observable } from 'rxjs';
 import { Page } from './page.interface';
 
 /// Fragments, Query and Mutations
-import languageFragment from './language.fragment.gql';
 import pageFragment from './page.fragment.gql';
-import seoFragment from './seo.fragment.gql';
 
 const fragments = {
-    languages: languageFragment,
-    page: pageFragment,
-    seo: seoFragment
+    page: pageFragment
 }
 
 const queryPages = gql`
@@ -22,9 +18,7 @@ const queryPages = gql`
             ...pageInfo
         }
     }
-    ${fragments['languages']}
     ${fragments['page']}
-    ${fragments['seo']}
 `;
 
 @Injectable()

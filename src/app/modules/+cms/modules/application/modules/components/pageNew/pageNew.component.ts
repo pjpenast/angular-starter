@@ -60,11 +60,7 @@ export class PageNewComponent implements OnInit {
             'app': [this.appId, Validators.required],
             'name': ['', Validators.required],
             'slug': ['', Validators.required],
-            'seo': this.formBuilder.group({
-                'title': this.generateGroupLanguage(),
-                'description': this.generateGroupLanguage(),
-                'keywords': this.generateGroupLanguage()
-            })
+            'active' : [true]
         });
 
         this.inputName = this.form.controls['name'];
@@ -95,6 +91,10 @@ export class PageNewComponent implements OnInit {
 
     updateSlug(event) {
         this.inputSlug.setValue(Slug(event.target.value));
+    }
+
+    onSubmit(values: any, isValid: boolean) {
+        console.log(values);
     }
 
 }

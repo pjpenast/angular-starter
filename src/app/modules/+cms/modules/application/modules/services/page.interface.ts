@@ -1,14 +1,8 @@
 export interface Page {
     id: string,
     app: string
-    seo: Seo,
     name: Array<string>,
-    slug: string
+    slug: string,
+    active: boolean,
+    primary: boolean
 }
-
-export interface Seo {
-    title: string,
-    description: string,
-    keywords: string
-}
-

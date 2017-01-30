@@ -1,6 +1,0 @@
-fragment translateInfo on Translation {
-    es,
-    en,
-    de,
-    fr
-}

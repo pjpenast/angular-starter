@@ -2,10 +2,9 @@ fragment pageInfo on Page {
     id,
     name,
     slug,
-    seo {
-        ...seoInfo
-    },
     app,
+    active, 
+    primary,
     createdAt,
     updateAt
 }

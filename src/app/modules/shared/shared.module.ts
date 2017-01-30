@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
 import { TranslatePipe } from '../../services/translate';
 
-import { AlertComponent, CheckboxComponent, InputComponent, LayoutComponent, InputFileComponent, SelectComponent, ItemComponent } from './components';
+import { AlertComponent, CheckboxComponent, InputComponent, LayoutComponent, InputFileComponent, SelectComponent, ItemComponent, ToggleComponent } from './components';
 
 const EXPORTS_DECLARATIONS = [
   AlertComponent,
@@ -15,6 +15,7 @@ const EXPORTS_DECLARATIONS = [
   SelectComponent,
   InputFileComponent,
   ItemComponent,
+  ToggleComponent,
   TranslatePipe  
 ];
 
