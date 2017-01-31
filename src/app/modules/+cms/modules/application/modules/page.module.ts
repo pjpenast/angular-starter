@@ -7,6 +7,7 @@ import { SharedModule } from 'modules';
 import { PageComponent } from './page.component';
 import { PageItemComponent, PageNewComponent } from './components';
 import { PageService } from './services/page.service';
+import { PageResolve } from './services/page.resolve';
 import { ApplicationResolve } from '../services/application.resolve';
 
 
@@ -27,7 +28,8 @@ import PageRoutes from './page.route';
   ],
   providers: [
       ApplicationResolve,
-      PageService
+      PageService,
+      PageResolve
   ]
 })
 export class PageModule {

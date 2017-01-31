@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs'
 
@@ -10,12 +10,13 @@ import { Page } from './services/page.interface';
     selector: 'cms-page',
     templateUrl: 'page.component.html'
 })
-export class PageComponent implements OnInit {
+export class PageComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription;
     private appId: string;
     private pages: Array<Page> = [];
     private breadcrumbs: any;
+    private query: any;
 
     constructor(
         private router: Router,
@@ -36,9 +37,19 @@ export class PageComponent implements OnInit {
         ]
 
         this.appId = this.currentRoute.snapshot.params['appId'];
-        this.subscription = this.service.getPages(this.appId).subscribe(
+        
+        this.query = this.service.getPages(this.appId);
+        this.subscription = this.query.subscribe(
             res => this.pages = res
         );
+    }
+
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
+    }
+
+    deletePage($event) {
+        this.query.refetch();
     }
 
 }

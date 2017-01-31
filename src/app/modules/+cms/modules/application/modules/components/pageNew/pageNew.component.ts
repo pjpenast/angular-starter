@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { Slug } from 'utils';
 import { TranslateService } from 'services';
 
 import { Application } from '../../../services/application.interface';
+import { PageService } from '../../services/page.service';
 
 
 @Component({
@@ -22,11 +23,16 @@ export class PageNewComponent implements OnInit {
     private inputName: any;
     private inputSlug: any;
     private subscriptionApp: Subscription;
+    private submitted: Boolean;
+    private errorMessage: String;
+    private errorShow: Boolean;
 
     constructor(
         private formBuilder: FormBuilder,
         private currentRoute: ActivatedRoute,
-        private translate: TranslateService
+        private translate: TranslateService,
+        private service: PageService,
+        private router: Router
     ) {
 
     }
@@ -39,11 +45,11 @@ export class PageNewComponent implements OnInit {
         this.breadcrumbs = [
             {
                 name: this.translate.instant('APPLICATIONS'),
-                link: '/auth/app'
+                link: '/apps'
             },
             {
                 name: this.translate.instant('PAGES'),
-                link: '/auth/page/' + this.appId
+                link: '/apps/'+this.appId+'/pages'
             }
         ];
 
@@ -60,7 +66,7 @@ export class PageNewComponent implements OnInit {
             'app': [this.appId, Validators.required],
             'name': ['', Validators.required],
             'slug': ['', Validators.required],
-            'active' : [true]
+            'active' : [false]
         });
 
         this.inputName = this.form.controls['name'];
@@ -94,7 +100,22 @@ export class PageNewComponent implements OnInit {
     }
 
     onSubmit(values: any, isValid: boolean) {
-        console.log(values);
+        
+        this.submitted = true;
+
+        if (!isValid) {
+            this.errorMessage = this.translate.instant('ALL_FIELDS_IS_REQUIRED');
+            this.errorShow = true;
+            return false;
+        }
+
+        this.errorShow = false;
+
+        this.service.savePage(values, this.appId)
+            .then((response) => {
+                this.router.navigate(['/apps/'+this.app.id+'/pages']);
+            })
+
     }
 
 }

@@ -2,6 +2,18 @@ input[type="checkbox"] {
     display: none;
 }
 
+.toggle-field {
+
+    label {
+        float:left;
+        padding-right: 7px;
+    }
+    
+    .toggle {
+        display: inline-block;
+    }
+}
+
 .toggle {
     width: 52px;
     height: 26px;

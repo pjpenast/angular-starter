@@ -25,7 +25,6 @@ export class ToggleComponent implements ControlValueAccessor {
 
   set value(val) {
     this._innerValue = val;
-    console.log(this._innerValue);
     this.propagateChange(this._innerValue);
   }
 

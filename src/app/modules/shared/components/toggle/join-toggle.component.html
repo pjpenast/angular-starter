@@ -1,4 +1,11 @@
-<div class="toggle" (click)="toggleCheck()" [ngClass]="{'active': value}">
-    <input [id]="name" type="checkbox">
-    <label [for]="name"></label>
+<div class="toggle-field">
+    <label><ng-content></ng-content></label>
+
+    <div class="toggle" (click)="toggleCheck()" [ngClass]="{'active': value}">
+        <input [id]="name" type="checkbox">
+        <label [for]="name"></label>
+    </div>
+
 </div>
+
+

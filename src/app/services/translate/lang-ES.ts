@@ -42,6 +42,7 @@ export const LANG_ES_TRANS = {
     'MAKE_YOUR_FIRST_PAGE_TO_START' : 'Haz tu primera página para empezar',
     'PAGE_NAME' : 'Nombre de la página',
     'PAGE_SLUG' : 'Slug de la página',
+    'PAGE_ACTIVE' : 'Activar página',
     'ENTER_PAGE_TITLE' : 'Escribe el título de la página',
     'ENTER_PAGE_DESCRIPTION' : 'Enter la descripción de la página',
     'ENTER_PAGE_KEYWORDS' : 'Enter las palabras clave (entre comas)',
