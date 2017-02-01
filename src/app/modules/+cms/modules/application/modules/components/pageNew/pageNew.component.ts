@@ -8,6 +8,7 @@ import { TranslateService } from 'services';
 
 import { Application } from '../../../services/application.interface';
 import { PageService } from '../../services/page.service';
+import { Page } from '../../services/page.interface';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class PageNewComponent implements OnInit {
     private form: FormGroup;
     private appId: string;
     private app: Application;
+    private page: Page;    
     private breadcrumbs: any;
     private inputName: any;
     private inputSlug: any;
@@ -41,6 +43,9 @@ export class PageNewComponent implements OnInit {
 
         this.appId = this.currentRoute.snapshot.params['appId'];
         this.app = this.currentRoute.snapshot.data['app'];
+        this.page = this.currentRoute.snapshot.data['page'];
+
+        console.log(this.page);
 
         this.breadcrumbs = [
             {
@@ -62,12 +67,23 @@ export class PageNewComponent implements OnInit {
 
         let group: any = {};
 
-        this.form = this.formBuilder.group({
-            'app': [this.appId, Validators.required],
-            'name': ['', Validators.required],
-            'slug': ['', Validators.required],
-            'active' : [false]
-        });
+        if (!this.page) {
+            this.form = this.formBuilder.group({
+                'app': [this.appId, Validators.required],
+                'name': ['', Validators.required],
+                'slug': ['', Validators.required],
+                'active' : [false]
+            });
+        } else {
+            this.form = this.formBuilder.group({
+                'id': [this.page.id, Validators.required],
+                'app': [this.page.app, Validators.required],
+                'name': [this.page.name, Validators.required],
+                'slug': [this.page.slug, Validators.required],
+                'active' : [this.page.active]
+            });
+        }
+
 
         this.inputName = this.form.controls['name'];
         this.inputSlug = this.form.controls['slug'];

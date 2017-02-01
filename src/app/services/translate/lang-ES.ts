@@ -58,5 +58,6 @@ export const LANG_ES_TRANS = {
     'CREATED_AT' : 'Creada',
     'ENGLISH' : 'Inglés',
     'SPANISH' : 'Español',
-    'USER_NOT_EXIST' : 'El usuario no existe'
+    'USER_NOT_EXIST' : 'El usuario no existe',
+    'PROFILE' : 'Perfil'
 };

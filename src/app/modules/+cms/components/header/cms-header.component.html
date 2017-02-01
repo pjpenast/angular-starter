@@ -3,7 +3,6 @@
         <img src="assets/images/logo.png" alt="Joinble">
     </div>
 
-
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown dropdown-fuse" dropdown>
                 <div class="navbar-btn btn-group">
@@ -22,7 +21,7 @@
                 
             </li>
             <li class="dropdown dropdown-fuse" dropdown>
-                <a class="dropdown-toggle fw600" dropdownToggle>
+                <a class="dropdown-toggle user-item fw600" dropdownToggle>
                     <span class="hidden-xs">{{user.name}}</span>
                     <span class="fa fa-caret-down hidden-xs mr15"></span>
                 </a>
@@ -51,8 +50,7 @@
                     </li>
                     <li class="list-group-item">
                         <a href="#" class="animated animated-short fadeInUp">
-                            <span class="fa fa-envelope-o"></span> Messages
-                            <span class="label label-warning">54</span>
+                            <span class="fa fa-user"></span> {{ 'PROFILE' | translate }}
                         </a>
                     </li>
                     <li class="list-group-item">

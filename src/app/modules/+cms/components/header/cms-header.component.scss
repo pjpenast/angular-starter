@@ -9,4 +9,14 @@ header {
             height: 5.5rem;
         }
     }
+
+    .user-item  {
+        cursor: pointer;
+    }
+
+    .dropdown-menu {
+        li {
+            cursor: pointer;
+        }
+    }
 }
